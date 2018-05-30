@@ -4,25 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MovieGallery.Data;
 
 namespace MovieGallery.Controllers
 {
 	public class MoviesController : Controller
 	{
-		public ActionResult Detail()
+		private MovieRepository _movieRepository = null;
+
+		public MoviesController() {
+			_movieRepository = new MovieRepository();
+		}
+
+		public ActionResult Detail(int? id)
 		{
-			Movie movie = new Movie() {
-				Title = "The Dark Knight",
-				ReleaseDate = new DateTime(2008, 7, 18),
-				DescriptionHtml = "With the help of allies Lt. Jim Gordon (Gary Oldman) and DA Harvey Dent (Aaron Eckhart), Batman (Christian Bale) has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker (Heath Ledger) suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.",
-				Actors = new Actor[] { 
-					new Actor() { Name = "Christian Bale", Role ="Batman/Bruce Wayne" },
-					new Actor() { Name = "Heath Ledger", Role ="The Joker" },
-					new Actor() { Name = "Gary Oldman", Role ="Commissioner Gordon" }
-				}
-			};
+			if (id == null)
+				return HttpNotFound();
+
+			Movie movie = _movieRepository.GetMovie(id.Value);
 
 			return View(movie);
+		}
+
+		public ActionResult Index()
+		{
+			Movie[] movies = _movieRepository.GetMovies();
+
+			return View(movies);
 		}
 	}
 }

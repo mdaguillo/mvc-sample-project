@@ -5,21 +5,31 @@
 	ViewBag.Title = Model.Title + " Movie Detail";
 }
 
-<h1>@Model.Title</h1>
-<h3>@Model.ReleaseDate.ToString("MMMM dd, yyyy")</h3>
+<h2>@Model.Title</h2>
 
-<h5>Description:</h5>
-<div>@Html.Raw(Model.DescriptionHtml)</div>
-
-@if (Model.Actors.Length > 0)
-{
-	<h5>Actors:</h5>
-	<div>
-		<ul>
-			@foreach (var actor in Model.Actors)
-			{ 
-				<li>@actor.Name: @actor.Role</li>
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
+			<h5><label>Release Date:</label> @Model.ReleaseDateDisplay</h5>
+			<h5><label>Favorite:</label> @(Model.Favorite ? "Yes" : "No")</h5>
+			@if (Model.Actors.Length > 0)
+			{
+				<h5>Actors:</h5>
+				<div>
+					<ul>
+						@foreach (var actor in Model.Actors)
+						{
+							<li>@actor.Name: @actor.Role</li>
+						}
+					</ul>
+				</div>
 			}
-		</ul>
+		</div>
+		<h5>Description:</h5>
+		<div>@Html.Raw(Model.DescriptionHtml)</div>
 	</div>
-}
+	<div class="col-md-6">
+		<img src="/Images/@Model.CoverImageFileName"
+			 alt="The Dark Knight" class="img-responsive" />
+	</div>
+</div>

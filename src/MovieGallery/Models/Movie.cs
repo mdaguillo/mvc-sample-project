@@ -22,5 +22,13 @@ namespace MovieGallery.Models
 				return Title.ToLower() + "-" + ReleaseDate.Year + ".jpg";
 			}
 		}
+
+		public string ReleaseDateDisplay 
+		{ 
+			get 
+			{
+				return ReleaseDate.ToString("MMMM dd, yyyy");
+			} 
+		}
 	}
 }
