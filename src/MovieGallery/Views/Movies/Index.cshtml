@@ -14,7 +14,8 @@
 		<a href="@Url.Action("Detail", new { id = movie.Id })">
 			<img src="/Images/@movie.CoverImageFileName"
 				 alt="@movie.Title"
-				 class="img-responsive" />
+				 class="img-responsive",
+				 style="max-height: 375px;"/>
 		</a>
 	</div>
 	}
