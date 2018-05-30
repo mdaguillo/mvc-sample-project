@@ -10,7 +10,10 @@ namespace MovieGallery.Controllers
 	{
 		public ActionResult Detail()
 		{
-			return Content("Hello World");
+			ViewBag.MovieTitle = "The Dark Knight";
+			ViewBag.ReleaseYear = 2008;
+
+			return View();
 		}
 	}
 }
