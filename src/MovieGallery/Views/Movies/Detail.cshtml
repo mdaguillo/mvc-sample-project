@@ -1,18 +1,9 @@
 ﻿@{
-	Layout = null;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Movie Detail";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-		<h1>@ViewBag.MovieTitle</h1>
-		<h3>@ViewBag.ReleaseYear</h3>
-    </div>
-</body>
-</html>
+<div>
+	<h1>@ViewBag.MovieTitle</h1>
+	<h3>@ViewBag.ReleaseYear</h3>
+</div>
